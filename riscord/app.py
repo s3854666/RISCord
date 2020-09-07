@@ -1,7 +1,7 @@
 from riscord import client
 import discord
 from discord.ext import commands
-import os
+import os, random	
 
 # @has_permissions()
 @client.command()
@@ -19,7 +19,6 @@ async def reload(ctx, extension):
 	client.unload_extension(f'riscord.cogs.{extension}')
 	client.load_extension(f'riscord.cogs.{extension}')
 	await ctx.send(f"Reloaded {extension}")
-
 
 
 for filename in os.listdir('./cogs'):

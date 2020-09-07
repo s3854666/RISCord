@@ -1,12 +1,9 @@
 # Dockerfiles are a list of instructions that Docker will follow to create your container for you
-FROM debian:stable-slim
+FROM python:3
 
-COPY . /src
+COPY . /usr/src/app
 
-WORKDIR /src
-RUN apt-get update
-RUN apt-get install python3 python3-pip -y
-RUN pip3 install -r requirements.txt
+WORKDIR /usr/src/app
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN ["chmod", "+x", "/src/bot.py"]
-ENTRYPOINT ["/src/bot.py"]
+CMD ["python", "./bot.py"]
