@@ -15,22 +15,13 @@ class General(commands.Cog):
 		if isinstance(error, commands.MissingRequiredArgument):
 			await ctx.send("```Please enter all the required arguments.\nCheck the ;help command for more information on the commands.```")
 	
-	@commands.Cog.listener()
-	async def on_message(self, message):
-		bad_words = ["fuck", "cunt", "bitch"]
-		replies = ["You kiss your mother with that mouth?", "Dickhead", "Shithead", "Watch your fucking language"]
-		if client.user.id != message.author.id:
-			for i in bad_words:
-				if i in message.content:
-					await message.channel.send(replies[random.randint(0,3)])
-	
 	# General commands
 	@commands.command()
 	async def ping(self, ctx):
 		await ctx.send(f'Pong!')
 	
 	@commands.command()
-	async def author(ctx):
+	async def author(self, ctx):
 		await ctx.send("good boy")
 
 
