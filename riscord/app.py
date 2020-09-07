@@ -1,27 +1,27 @@
-from riscord import client, verify_student
+from riscord import client
+import discord
 from discord.ext import commands
+import os
 
-@client.event
-async def on_ready():
-	print("Bot is ready.")
+# @has_permissions()
+@client.command()
+async def load(ctx, extension):
+	client.load_extension(f'riscord.cogs.{extension}')
+	await ctx.send(f"Loaded {extension}")
 
 @client.command()
-async def ping(ctx):
-	await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+async def unload(ctx, extension):
+	client.unload_extension(f'riscord.cogs.{extension}')
+	await ctx.send(f"Unloaded {extension}")
 
 @client.command()
-async def verify(ctx, *, student_id):
-	
-	verified = await verify_student.verify_user(student_id)
-	if verified:
-		# member = ctx.message.author
-		# role = get(member.server.roles, name="Bots")
-		# await bot.add_roles(member, role)
-		await ctx.send('Membership confirmed')
-	else:
-		await ctx.send("The student is not a member")
+async def reload(ctx, extension):
+	client.unload_extension(f'riscord.cogs.{extension}')
+	client.load_extension(f'riscord.cogs.{extension}')
+	await ctx.send(f"Reloaded {extension}")
 
-@client.event
-async def on_command_error(ctx, error):
-	if isinstance(error, commands.MissingRequiredArgument):
-		await ctx.send("```Please enter all the required arguments.\nCheck the ;help command for more information on the commands.```")
+
+
+for filename in os.listdir('./cogs'):
+	if filename.endswith(".py"):
+		client.load_extension(f'riscord.cogs.{filename[:-3]}')
