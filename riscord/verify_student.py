@@ -7,10 +7,7 @@ async def verify_user(student_id):
 	for i in range(2, sheet.max_row+1):
 		id_val = str(sheet.cell(row=i, column=9).value)
 		valid_chars = ["s", "S"]
-		
-		print(id_val[0] + " and its mem addr " + str(id(id_val[0])))
-		print("Memory addr for just s " + str(id("s")))
-		
+				
 		if id_val[0] not in valid_chars:
 			id_val = "s"+id_val
 		
