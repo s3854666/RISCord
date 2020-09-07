@@ -3,7 +3,7 @@ from discord.ext import commands
 import openpyxl
 import os
 
-xlsx = openpyxl.load_workbook("members.xlsx")
+xlsx = openpyxl.load_workbook("riscord/members.xlsx")
 sheet = xlsx.active
 
 class Verification(commands.Cog):

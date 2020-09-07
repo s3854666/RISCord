@@ -21,6 +21,6 @@ async def reload(ctx, extension):
 	await ctx.send(f"Reloaded {extension}")
 
 
-for filename in os.listdir('./cogs'):
+for filename in os.listdir('./riscord/cogs'):
 	if filename.endswith(".py"):
 		client.load_extension(f'riscord.cogs.{filename[:-3]}')
