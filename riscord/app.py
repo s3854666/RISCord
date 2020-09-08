@@ -21,8 +21,8 @@ async def reload(ctx, extension):
 
 @client.event
 async def on_message(message):
-	bad_words = ["fuck", "cunt", "bitch"]
-	replies = ["You kiss your mother with that mouth?", "Dickhead", "Shithead", "Watch your fucking language"]
+	bad_words = ["fuck", "cunt", "bitch", "dick", "shit"]
+	replies = ["You kiss your mother with that mouth?", ":angwy:", ":eyes:", "Isaac someone is swearing again", "Dickhead", "Shithead", "Watch your flipping language"]
 
 	if message.author == client.user:
 		return
@@ -31,7 +31,6 @@ async def on_message(message):
 			if i in message.content:
 				await message.channel.send(replies[random.randint(0,3)])
 		await client.process_commands(message)
-	
 
 
 for filename in os.listdir('./riscord/cogs'):

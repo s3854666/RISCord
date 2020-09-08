@@ -23,8 +23,11 @@ class Verification(commands.Cog):
 				id_val = "s" + id_val[1:-1]
 
 			if id_val == student_id:
-				await ctx.send("Valid user")
+				member_role = discord.utils.get(member.guild.roles, name="Member")
+				await ctx.send("Welcome to the club :tada:")
+				await ctx.author.add_roles(ctx.author, member_role)
 				return True
+
 		await ctx.send("User not found")
 		return False
 
