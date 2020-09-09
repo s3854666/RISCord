@@ -31,7 +31,12 @@ async def on_message(message):
 			if i in message.content:
 				await message.channel.send(replies[random.randint(0,3)])
 		await client.process_commands(message)
-
+	try:
+		# Delete the message right away if it contains a student number.
+		if message.content.startswith(";verify") or message.content.startswith(";v"):
+			await message.channel.purge(limit=2)
+	except:
+		pass
 
 for filename in os.listdir('./riscord/cogs'):
 	if filename.endswith(".py"):

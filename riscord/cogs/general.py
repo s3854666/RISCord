@@ -17,12 +17,24 @@ class General(commands.Cog):
 	
 	# General commands
 	@commands.command()
+	async def help(self, ctx):
+		embed = discord.Embed(color=discord.Colour.blue(), title='Help command', description='Shows the commands that you can run')
+		embed.set_author(name="RISC")
+		embed.add_field(name=';help or ;h', value='Shows this message', inline=False)
+		embed.add_field(name=';verify or ;v', value='Verifies your membership', inline=False)
+		embed.add_field(name='More features coming soon', value=" :)", inline=False)
+		embed.set_footer(text="Source code https://github.com/n00bmasterr/RISCord")
+
+		await ctx.send(embed=embed)
+
+	@commands.command()
 	async def ping(self, ctx):
 		await ctx.send(f'Pong!')
 	
 	@commands.command()
 	async def author(self, ctx):
 		await ctx.send("good boy")
+
 
 
 def setup(client):
