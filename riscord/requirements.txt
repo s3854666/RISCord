@@ -1,0 +1,4 @@
+icalendar==4.0.7
+openpyxl==3.0.5
+discord.py==1.5.1
+discord==1.0.1

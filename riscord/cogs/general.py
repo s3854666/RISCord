@@ -16,7 +16,7 @@ class General(commands.Cog):
 			await ctx.send("```Please enter all the required arguments.\nCheck the ;help command for more information on the commands.```")
 	
 	# General commands
-	@commands.command()
+	@commands.command(aliases=['h'])
 	async def help(self, ctx):
 		embed = discord.Embed(color=discord.Colour.blue(), title='Help command', description='Shows the commands that you can run')
 		embed.set_author(name="RISC")
